@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>メンバー紹介 | FirmName</title>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/theme-trust.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <style>
+    /* 最小限のグリッド（SP1列 / 768px〜2列 / 1025px〜3列） */
+    .t2-team{
+      width:min(92vw, var(--t2-container));
+      margin: clamp(20px,4vw,40px) auto;
+      padding-inline:16px;
+    }
+    .t2-team-grid{
+      display:grid; gap:14px; grid-template-columns:1fr;
+    }
+    @media (min-width:768px){ .t2-team-grid{ grid-template-columns: 1fr 1fr; gap:16px; } }
+    @media (min-width:1025px){ .t2-team-grid{ grid-template-columns: 1fr 1fr 1fr; gap:18px; } }
+    .t2-person{
+      background:#fff; border:1px solid rgba(200,169,106,.25);
+      border-radius:12px; padding:12px; display:grid; gap:10px;
+      transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+    }
+    .t2-person:hover{
+      border-color: rgba(200,169,106,.35);
+      box-shadow:0 10px 28px rgba(0,0,0,.10);
+      transform: translateY(-1px);
+    }
+    .t2-person-fig{ aspect-ratio: 1 / 1; border-radius:10px; overflow:hidden; background:#e2e8f0; }
+    .t2-person-fig img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .t2-person h3{ color:var(--navy); font-size: clamp(16px, 2.2vw, 18px); margin-top:4px; }
+    .t2-person-role{ font-size:13px; color:#64748b; }
+    .t2-person-bio{ color:var(--ink); font-size:14px; line-height:1.8; }
+  </style>
+</head>
+<body class="p-team">
+  <a class="t2-skip" href="#main">本文へスキップ</a>
+
+  <header class="t2-header">
+    <div class="inner">
+      <a class="t2-brand" href="index.html">FirmName</a>
+      <nav class="t2-nav" aria-label="メインナビゲーション">
+        <a href="index.html#services">業務内容</a>
+        <a href="index.html#about">事務所について</a>
+        <!-- team.html のヘッダーだけ -->
+        <a href="team.html" aria-current="page">チーム紹介</a>
+
+        <a class="btn-gold" href="index.html#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="t2-page-hero" style="--t2-hero-img:url('../image/service-2.jpeg');">
+    <div class="inner">
+      <h1 class="t2-page-title">メンバー紹介</h1>
+    </div>
+  </section>
+
+  <nav class="t2-breadcrumb" aria-label="パンくず">
+    <ol>
+      <li><a href="./index.html">ホーム</a></li>
+      <li aria-current="page">メンバー紹介</li>
+    </ol>
+  </nav>
+
+  <main id="main" class="t2-team" tabindex="-1">
+    <p class="lead" style="margin-bottom:12px;">公開可能な範囲で、主要メンバーをご紹介します。</p>
+
+    <div class="t2-team-grid">
+      <!-- 代表 -->
+      <article class="t2-person">
+        <figure class="t2-person-fig">
+          <img src="../image/service-3.jpg" alt="代表の写真" width="800" height="800" loading="lazy">
+        </figure>
+        <header>
+          <h3>□□ □□</h3>
+          <div class="t2-person-role">代表</div>
+        </header>
+        <p class="t2-person-bio">
+          企業法務・知的財産・ガバナンス領域を中心に支援。実務に根差した助言と運用設計を重視しています。
+        </p>
+      </article>
+
+      <!-- メンバー例 -->
+      <article class="t2-person">
+        <figure class="t2-person-fig">
+          <img src="../image/service-1.jpeg" alt="メンバーAの写真" width="800" height="800" loading="lazy">
+        </figure>
+        <header>
+          <h3>山田 花子</h3>
+          <div class="t2-person-role">企業法務</div>
+        </header>
+        <p class="t2-person-bio">
+          契約書レビュー、下請法対応、取引基本契約の標準化などを担当。社内教育やひな形整備も支援しています。
+        </p>
+      </article>
+
+      <article class="t2-person">
+        <figure class="t2-person-fig">
+          <img src="../image/service-2.jpeg" alt="メンバーBの写真" width="800" height="800" loading="lazy">
+        </figure>
+        <header>
+          <h3>佐藤 太郎</h3>
+          <div class="t2-person-role">知的財産</div>
+        </header>
+        <p class="t2-person-bio">
+          商標出願・更新管理、権利侵害対応、ブランド戦略の設計に従事。国内外のポートフォリオ運用を担当。
+        </p>
+      </article>
+    </div>
+<!-- personカード内のCTA（例） -->
+<div class="t2-card-cta t2-cta">
+  <p class="t2-card-cta-text">
+    <span class="line1">ご相談はフォームまたはお電話にて</span><br class="sp-only">
+    <span class="line2">承ります。初回相談は無料です。</span>
+  </p>
+  <a class="btn-gold" href="index.html#contact">お問い合わせへ</a>
+</div>
+
+
+  </main>
+
+<!-- Footer -->
+  <footer id="footer" class="t2-footer">
+  <div class="inner">
+    <!-- 既存: ブランド / address / copy ... -->
+
+    <!-- ▼ 追加: フッターナビ（シンプルな横並び） -->
+    <nav class="t2-foot-nav" aria-label="フッターナビ">
+      <a href="index.html#services">業務内容</a>
+      <a href="index.html#about">事務所について</a>
+      <a href="team.html">チーム紹介</a>           <!-- ← 追加 -->
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="news.html">お知らせ</a>
+      <a href="index.html#contact">お問い合わせ</a>
+    </nav>
+
+    <small class="t2-copy">© 2025 FirmName</small>
+  </div>
+</footer>
+<script src="base.js" defer></script>
+</body>
+</html>

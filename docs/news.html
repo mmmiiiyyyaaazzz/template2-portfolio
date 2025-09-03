@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>お知らせ一覧 | FirmName</title>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/theme-trust.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body class="p-news">
+
+  <a class="t2-skip" href="#main">本文へスキップ</a>
+
+  <!-- Header -->
+  <header class="t2-header">
+    <div class="inner">
+      <a class="t2-brand" href="../pages/index.html">FirmName</a>
+      <nav class="t2-nav" aria-label="メインナビゲーション">
+        <a href="index.html#services">業務内容</a>
+        <a href="index.html#about">事務所について</a>
+        <a class="btn-gold" href="index.html#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 下層ヒーロー -->
+  <section class="t2-page-hero" style="--t2-hero-img:url('../image/service-1.jpeg');">
+    <div class="inner">
+      <h1 class="t2-page-title">お知らせ一覧</h1>
+    </div>
+  </section>
+
+  <!-- パンくず -->
+  <nav class="t2-breadcrumb" aria-label="パンくず">
+    <ol>
+      <li><a href="../pages/index.html">ホーム</a></li>
+      <li aria-current="page">お知らせ一覧</li>
+    </ol>
+  </nav>
+
+  <!-- Main -->
+  <main id="main" tabindex="-1">
+    <section class="t2-news">
+      <div class="inner">
+        <p class="lead">最新のご案内や休業情報、セミナー告知などを掲載します。</p>
+
+        <div class="t2-news-list">
+          <!-- 1件目 -->
+          <article class="t2-news-item">
+            <a class="t2-news-link" href="#">
+              <div class="t2-news-meta">
+                <time datetime="2025-08-01">2025.08.01</time>
+                <span class="t2-tag">お知らせ</span>
+              </div>
+              <h3 class="t2-news-title">夏季休業日のご案内（8/13–16）</h3>
+              <p class="t2-news-excerpt">期間中の新規ご相談はフォームより承ります。営業再開後に順次ご連絡いたします。</p>
+              <span class="t2-more">詳しく見る</span>
+            </a>
+          </article>
+
+          <!-- 2件目 -->
+          <article class="t2-news-item">
+            <a class="t2-news-link" href="#">
+              <div class="t2-news-meta">
+                <time datetime="2025-07-15">2025.07.15</time>
+                <span class="t2-tag">セミナー</span>
+              </div>
+              <h3 class="t2-news-title">中小企業向けガバナンス入門（無料ウェビナー）</h3>
+              <p class="t2-news-excerpt">内部統制の基本と実務のポイントを、事例を交えて解説します。</p>
+              <span class="t2-more">詳しく見る</span>
+            </a>
+          </article>
+
+          <!-- 3件目 -->
+          <article class="t2-news-item">
+            <a class="t2-news-link" href="#">
+              <div class="t2-news-meta">
+                <time datetime="2025-06-20">2025.06.20</time>
+                <span class="t2-tag">メディア</span>
+              </div>
+              <h3 class="t2-news-title">「知的財産戦略のいろは」に当事務所の解説が掲載されました</h3>
+              <p class="t2-news-excerpt">商標の基礎と運用の考え方、更新の注意点などを解説しています。</p>
+              <span class="t2-more">詳しく見る</span>
+            </a>
+          </article>
+        </div>
+
+        <!-- ページネーション（必要になったら使う） -->
+        <!-- ページネーション（1ページのみの間は隠す） -->
+        <nav class="t2-pagination" aria-label="ページネーション" hidden>
+            <ol>
+            <li aria-current="page">1</li>
+            </ol>
+        </nav>
+
+      </div>
+    </section>
+
+<section class="t2-cta-split">
+  <div class="inner">
+    <div class="t2-cta t2-cta--article">
+      <p class="t2-cta-text">
+        ご相談はフォームまたはお電話にて<br class="sp-only">承ります。<br class="tab-only">初回相談は無料です。
+      </p>
+      <a class="btn-gold" href="index.html#contact">お問い合わせへ</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  </main>
+
+ <!-- Footer -->
+  <footer id="footer" class="t2-footer">
+  <div class="inner">
+    <!-- 既存: ブランド / address / copy ... -->
+
+    <!-- ▼ 追加: フッターナビ（シンプルな横並び） -->
+    <nav class="t2-foot-nav" aria-label="フッターナビ">
+      <a href="index.html#services">業務内容</a>
+      <a href="index.html#about">事務所について</a>
+      <a href="team.html">チーム紹介</a>           <!-- ← 追加 -->
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="news.html">お知らせ</a>
+      <a href="index.html#contact">お問い合わせ</a>
+    </nav>
+
+    <small class="t2-copy">© 2025 FirmName</small>
+  </div>
+</footer>
+<script src="base.js" defer></script>
+</body>
+</html>
