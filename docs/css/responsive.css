@@ -1210,3 +1210,7 @@
 
 /* v1: お知らせボタンを全幅で中央寄せ */
 .t2-news-actions{ display:flex; justify-content:center; }
+
+@media (max-width: 767px){
+  .t2-form .t2-form-actions{ display:flex; justify-content:center; }
+}
