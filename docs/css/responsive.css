@@ -1207,3 +1207,6 @@
     justify-content: center;
   }
 }
+
+/* v1: お知らせボタンを全幅で中央寄せ */
+.t2-news-actions{ display:flex; justify-content:center; }
