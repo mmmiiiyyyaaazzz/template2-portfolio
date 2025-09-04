@@ -70,7 +70,7 @@ html{
   color:#fff;
   background:
     linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.68)),
-    url("../image/hero.jpeg") center 40%/cover no-repeat;
+    url("../img/hero.jpeg") center 40%/cover no-repeat;
 }
 .t2-hero .inner{
   width:min(92vw,1100px);
@@ -1237,3 +1237,4 @@ br.sp-only{ display: none; }
   display: block;        /* インラインのsmallでも独立行にする */
   text-align: center;    /* 文字を中央に */
 }
+
