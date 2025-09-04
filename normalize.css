@@ -1,5 +1,0 @@
-/* 最小リセット */
-*,*::before,*::after{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; }
-img{ max-width:100%; display:block; height:auto; }
-button,input,textarea,select{ font:inherit; }
