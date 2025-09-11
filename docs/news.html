@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>お知らせ一覧 | FirmName</title>
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/theme-trust.css" />
-  <link rel="stylesheet" href="../css/responsive.css" />
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/theme-trust.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
 </head>
 <body class="p-news">
 
@@ -15,7 +16,7 @@
   <!-- Header -->
   <header class="t2-header">
     <div class="inner">
-      <a class="t2-brand" href="../pages/index.html">FirmName</a>
+      <a class="t2-brand" href="index.html">FirmName</a>
       <nav class="t2-nav" aria-label="メインナビゲーション">
         <a href="index.html#services">業務内容</a>
         <a href="index.html#about">事務所について</a>
@@ -25,7 +26,7 @@
   </header>
 
   <!-- 下層ヒーロー -->
-  <section class="t2-page-hero" style="--t2-hero-img:url('../image/service-1.jpeg');">
+  <section class="t2-page-hero" style="--t2-hero-img:url('img/service-1.jpeg');">
     <div class="inner">
       <h1 class="t2-page-title">お知らせ一覧</h1>
     </div>
@@ -34,7 +35,7 @@
   <!-- パンくず -->
   <nav class="t2-breadcrumb" aria-label="パンくず">
     <ol>
-      <li><a href="../pages/index.html">ホーム</a></li>
+      <li><a href="index.html">ホーム</a></li>
       <li aria-current="page">お知らせ一覧</li>
     </ol>
   </nav>
@@ -45,10 +46,10 @@
       <div class="inner">
         <p class="lead">最新のご案内や休業情報、セミナー告知などを掲載します。</p>
 
-        <div class="t2-news-list">
+        <div id="list" class="t2-news-list">
           <!-- 1件目 -->
           <article class="t2-news-item">
-            <a class="t2-news-link" href="#">
+            <a class="t2-news-link" href="#n-2025-08-01">
               <div class="t2-news-meta">
                 <time datetime="2025-08-01">2025.08.01</time>
                 <span class="t2-tag">お知らせ</span>
@@ -61,7 +62,7 @@
 
           <!-- 2件目 -->
           <article class="t2-news-item">
-            <a class="t2-news-link" href="#">
+            <a class="t2-news-link" href="#n-2025-07-15">
               <div class="t2-news-meta">
                 <time datetime="2025-07-15">2025.07.15</time>
                 <span class="t2-tag">セミナー</span>
@@ -74,7 +75,7 @@
 
           <!-- 3件目 -->
           <article class="t2-news-item">
-            <a class="t2-news-link" href="#">
+            <a class="t2-news-link" href="#n-2025-06-20">
               <div class="t2-news-meta">
                 <time datetime="2025-06-20">2025.06.20</time>
                 <span class="t2-tag">メディア</span>
@@ -85,6 +86,72 @@
             </a>
           </article>
         </div>
+
+        <!-- ▼ 詳細：1件目 -->
+<article id="n-2025-08-01" class="news-detail" itemscope itemtype="https://schema.org/NewsArticle">
+  <header class="news-detail__head">
+    <h1 class="news-detail__title" itemprop="headline">夏季休業日のご案内（8/13–16）</h1>
+    <p class="news-detail__meta">
+      <time datetime="2025-08-01" itemprop="datePublished">2025.08.01</time>
+      <span class="news-detail__cat">お知らせ</span>
+    </p>
+  </header>
+  <div class="t2-article__body" itemprop="articleBody">
+    <p>平素よりご愛顧いただきありがとうございます。下記期間、夏季休業といたします。</p>
+    <ul><li>2025年8月13日（水）〜 8月16日（土）</li></ul>
+    <p>期間中の新規ご相談は<a href="index.html#contact">フォーム</a>より承ります。営業再開後に順次ご返信いたします。</p>
+  </div>
+  <footer class="news-detail__footer">
+    <nav class="news-pager" aria-label="記事ナビゲーション">
+      <a class="news-pager__list" href="#list">お知らせ一覧へ</a>
+    </nav>
+  </footer>
+</article>
+
+<!-- ▼ 詳細：2件目 -->
+<article id="n-2025-07-15" class="news-detail" itemscope itemtype="https://schema.org/NewsArticle">
+  <header class="news-detail__head">
+    <h1 class="news-detail__title" itemprop="headline">中小企業向けガバナンス入門（無料ウェビナー）</h1>
+    <p class="news-detail__meta">
+      <time datetime="2025-07-15" itemprop="datePublished">2025.07.15</time>
+      <span class="news-detail__cat">セミナー</span>
+    </p>
+  </header>
+  <div class="t2-article__body" itemprop="articleBody">
+    <p>内部統制の基本と実務のポイントを、事例を交えて解説します。</p>
+    <h2>開催概要</h2>
+    <ul>
+      <li>日時：2025年7月30日（水）16:00–17:00（オンライン）</li>
+      <li>参加費：無料（要申込）</li>
+    </ul>
+    <p>お申込みは<a href="index.html#contact">お問い合わせフォーム</a>より「セミナー参加希望」とご記入ください。</p>
+  </div>
+  <footer class="news-detail__footer">
+    <nav class="news-pager" aria-label="記事ナビゲーション">
+      <a class="news-pager__list" href="#list">お知らせ一覧へ</a>
+    </nav>
+  </footer>
+</article>
+
+<!-- ▼ 詳細：3件目 -->
+<article id="n-2025-06-20" class="news-detail" itemscope itemtype="https://schema.org/NewsArticle">
+  <header class="news-detail__head">
+    <h1 class="news-detail__title" itemprop="headline">「知的財産戦略のいろは」に当事務所の解説が掲載されました</h1>
+    <p class="news-detail__meta">
+      <time datetime="2025-06-20" itemprop="datePublished">2025.06.20</time>
+      <span class="news-detail__cat">メディア</span>
+    </p>
+  </header>
+  <div class="t2-article__body" itemprop="articleBody">
+    <p>商標の基礎と運用の考え方、更新の注意点などを解説しています。誌面は店頭・Webにてご覧いただけます。</p>
+  </div>
+  <footer class="news-detail__footer">
+    <nav class="news-pager" aria-label="記事ナビゲーション">
+      <a class="news-pager__list" href="#list">お知らせ一覧へ</a>
+    </nav>
+  </footer>
+</article>
+
 
         <!-- ページネーション（必要になったら使う） -->
         <!-- ページネーション（1ページのみの間は隠す） -->
@@ -101,15 +168,27 @@
   <div class="inner">
     <div class="t2-cta t2-cta--article">
       <p class="t2-cta-text">
-        ご相談はフォームまたはお電話にて<br class="sp-only">承ります。<br class="tab-only">初回相談は無料です。
-      </p>
+  ご相談はフォームまたはお電話にて<br class="sp-only">承ります。<br class="tab-only">初回相談は無料です。
+</p>
+
       <a class="btn-gold" href="index.html#contact">お問い合わせへ</a>
+
+      <!-- ▼ ここから追加：電話番号＋営業時間（JSは使いません） -->
+<div class="t2-cta-tel">
+  <a class="t2-cta-tel__link" href="tel:0312345678" aria-label="電話 03 1234 5678">
+    TEL 03-1234-5678
+  </a>
+  <small class="t2-cta-tel__hours">
+    平日 9:00–18:00
+  </small>
+</div>
+
+
+
+      <!-- ▲ ここまで追加 -->
     </div>
   </div>
 </section>
-
-
-
 
 
   </main>
@@ -132,6 +211,7 @@
     <small class="t2-copy">© 2025 FirmName</small>
   </div>
 </footer>
+
 <script src="base.js" defer></script>
 </body>
 </html>
