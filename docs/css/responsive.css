@@ -1208,9 +1208,926 @@
   }
 }
 
-/* v1: お知らせボタンを全幅で中央寄せ */
-.t2-news-actions{ display:flex; justify-content:center; }
+/* team：Tablet（768–1023px） 2行／テキストとボタンを近づける */
+@media (min-width: 768px) and (max-width: 1023px){
+  .p-team .t2-card-cta{
+    /* 左=テキストは“中身の幅だけ”、右=ボタンはそのまま */
+    grid-template-columns: max-content auto;
+    justify-content: center;
+    column-gap: 24px;              /* 近づけ具合：10〜16pxでお好み */
+  }
+  .p-team .t2-card-cta-text{
+    max-width: 44ch;               /* 2行目安。3行になるなら 46ch へ */
+    margin: 0;                      /* 余計な押し出しをリセット */
+    text-wrap: balance;             /* 対応ブラウザで改行をきれいに */
+  }
+  .p-team .t2-card-cta .btn-gold{
+    min-width: auto;          /* ← 横長固定を解除 */
+    padding-inline: 1.1em;    /* ← 横の余白を少しだけ細めに（既定1.4em→1.1em） */
+    display: inline-flex;
+    justify-content: center;
+  }
+}
+
+/* === CTA 共通レイアウト（スイッチ式） ========================= */
+/* body に .is-cta-unified が付いているページだけ有効になる */
 
 @media (max-width: 767px){
-  .t2-form .t2-form-actions{ display:flex; justify-content:center; }
+  .is-cta-unified .t2-cta--article{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    justify-items: center;
+    text-align: center;
+    padding-block: 16px;
+  }
+  .is-cta-unified .t2-cta-text{
+    max-width: 40ch;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .is-cta-unified .t2-cta--article .btn-gold{
+    width: auto;
+    padding: 10px 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+  .is-cta-unified .t2-cta--article{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto; /* 左=テキスト, 右=ボタン */
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px; /* 近づける */
+  }
+  .is-cta-unified .t2-cta-text{ line-height: 1.6; }
+}
+
+@media (min-width: 1025px){
+  .is-cta-unified .t2-cta--article{
+    display: grid;
+    grid-template-columns: max-content auto;  /* 1行で凛と見せる */
+    align-items: baseline;
+    justify-content: center;                  /* セット全体を中央へ */
+    column-gap: 30px;
+  }
+  .is-cta-unified .t2-cta-text{
+    white-space: nowrap; /* PCは1行固定 */
+    margin: 0;
+  }
+}
+
+/* PCだけ：お知らせのボタン＆フォーム送信ボタンを中央寄せ */
+@media (width:1024px), (min-width:1025px){
+  /* お知らせセクションのボタン行 */
+  .t2-news .t2-news-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* お問い合わせフォームの送信ボタン行 */
+  .t2-contact-sec .t2-form-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;              /* グリッド内でも行全体を使う */
+  }
+
+  /* ボタン要素側の縦中央（見た目のズレ防止の保険） */
+  .t2-news .t2-news-actions > a,
+  .t2-contact-sec .t2-form-actions > :is(a, button, input[type="submit"]){
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* 768px だけ：お知らせボタンの“上”に少し余白 */
+@media (width: 768px){
+  .t2-news .t2-news-actions{
+    margin-top: 16px;
+  }
+}
+
+/* PCサイズ（1024含む）：お知らせボタンの“上”に少し余白 */
+@media (width:1024px), (min-width:1025px){
+  .t2-news .t2-news-actions{
+    margin-top: 20px;  /* 16pxでもOK。お好みで */
+  }
+  /* （任意）ボタン自体の margin-top が邪魔なら 0 に */
+  /* .t2-news .t2-news-actions > a{ margin-top: 0; } */
+}
+
+/* PC/1024 時はタイトル+リードを1行連結（余白ゼロ） */
+@media (width:1024px), (min-width:1025px){
+  .cta-local__body{
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+    gap: 0;             /* ← これで「にて」と「承ります。」の間の余白ゼロ */
+    max-width: none;    /* 折返し抑制のため */
+  }
+  .cta-local__title,
+  .cta-local__lead{
+    display: inline;
+    margin: 0;
+  }
+}
+
+
+
+
+@media (min-width:768px){
+  .t2-cta--article .t2-cta-tel{
+    flex-direction: row !important;
+    text-align: left !important;
+  }
+  .t2-cta--article .t2-cta-tel__link,
+  .t2-cta--article .t2-cta-tel__hours{
+    display: inline-block !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 767px){
+  .t2-cta.t2-cta--article .t2-cta-tel{
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ===== CTA 最終版 ===== */
+
+/* PC & タブレット（769px〜）：左2行＋右ボタン縦中央、中央寄せ */
+@media (min-width: 769px){
+  .t2-cta-split > .inner > .t2-cta,
+  .t2-cta-split > .t2-cta{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    column-gap: 22px;   /* ←距離はここで調整 */
+    row-gap: 6px;
+    align-items: center;
+  }
+  .t2-cta--article .t2-cta-text{
+    grid-column: 1; grid-row: 1;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .t2-cta--article .t2-cta-text br{ display: none; }
+  .t2-cta--article .t2-cta-tel{
+    grid-column: 1; grid-row: 2;
+    display: flex; flex-wrap: nowrap; align-items: baseline;
+    gap: 12px; white-space: nowrap; margin: 0;
+  }
+  .t2-cta--article .btn-gold{
+    grid-column: 2; grid-row: 1 / span 2;
+    align-self: center; justify-self: start;
+    margin: 0; white-space: nowrap;
+  }
+}
+
+/* 768px ちょうど：テキストは自然に2行、TELは横1行、中央寄せ */
+@media (width: 768px){
+  .t2-cta-split > .inner > .t2-cta,
+  .t2-cta-split > .t2-cta{
+    display: grid;
+    grid-template-columns: fit-content(44ch) auto;
+    justify-content: center;
+    column-gap: 22px; row-gap: 6px; align-items: center;
+  }
+  .t2-cta--article .t2-cta-text{
+    grid-column: 1; grid-row: 1;
+    margin: 0; white-space: normal; max-width: 42ch; min-width: 0;
+  }
+  .t2-cta--article .t2-cta-text br{ display: none; }
+  .t2-cta--article .t2-cta-tel{
+    grid-column: 1; grid-row: 2;
+    display: flex; flex-wrap: nowrap; align-items: baseline;
+    gap: 12px; white-space: nowrap; margin: 0;
+  }
+  .t2-cta--article .btn-gold{
+    grid-column: 2; grid-row: 1 / span 2;
+    align-self: center; justify-self: start;
+    margin: 0; white-space: nowrap;
+  }
+}
+
+/* モバイル（〜767px）：テキスト → TEL → ボタン（ボタンは一番下） */
+@media (max-width: 767px){
+  .t2-cta-split > .inner > .t2-cta,
+  .t2-cta-split > .t2-cta{
+    display: flex; flex-direction: column; gap: 12px; align-items: stretch;
+  }
+  .t2-cta--article .t2-cta-text{ order: 1; text-align: center; }
+  .t2-cta--article .t2-cta-tel{
+    order: 2;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; gap: 6px; margin-top: -4px; align-self: center;
+    width: max-content;
+  }
+  .t2-cta--article .btn-gold{ order: 3; align-self: center; }
+}
+/* --- 769px〜：TEL&営業時間の間隔と縦位置を安定化 --- */
+@media (min-width: 769px){
+  .t2-cta--article .t2-cta-tel{
+    align-items: center;      /* ベースラインではなく中央揃えにして段差解消 */
+    gap: 12px !important;     /* 距離を明示（上書き確実化） */
+  }
+}
+
+/* --- 768px ちょうど：同じく中央揃え＆距離確保 --- */
+@media (width: 768px){
+  .t2-cta--article .t2-cta-tel{
+    align-items: center;
+    gap: 12px !important;
+  }
+}
+
+
+/* ——— 一覧/詳細の表示切替（JSなし） ——— */
+.news-detail{ display: none; }
+.news-detail:target{ display: block; }
+
+/* 何かの news-detail が表示されているときは一覧を隠す */
+body:has(.news-detail:target) #list{ display: none; }
+body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネーションも非表示 */
+
+/* 最小レイアウト（必要に応じてお好みで） */
+.news-detail{
+  max-width: 840px; margin: 0 auto;
+  padding: clamp(16px,3.5vw,28px) 16px; box-sizing: border-box;
+}
+.news-detail__title{ font-size: clamp(20px,2.2vw,28px); line-height: 1.5; margin: 0 0 8px; }
+.news-detail__meta{ color:#6b7a8b; font-size: .95rem; display:flex; gap:12px; align-items:center; margin:0 0 16px; }
+.news-pager{ display:grid; grid-template-columns: 1fr; justify-items:center; gap:12px; margin-top: clamp(20px,4vw,28px); }
+.news-detail{ scroll-margin-top: 80px; } /* ヘッダー高さに合わせて調整 */
+
+.news-pager{ margin-top: clamp(20px, 4vw, 32px); }
+
+
+/* ===== works.html 専用：シンプルCTA（.x-cta）最終版 ===== */
+
+/* 共通（見た目の箱） */
+.x-cta{
+  width: min(92vw, var(--t2-container, 1100px));
+  margin: clamp(16px, 4vw, 28px) auto;
+  padding: clamp(16px, 3.5vw, 28px) 16px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  background: #0f1e2f;
+  color: #fff;
+}
+.x-cta .xL > *{ margin: 0; }     /* xText と xTel の余白を初期化 */
+.x-cta .xText{ margin: 0; }
+.x-cta .xTel{ margin: 0; }
+
+/* PC & タブレット（769px〜）：左2段（1:テキスト／2:TEL&時間）＋右ボタン“縦中央”、中央寄せ */
+@media (min-width:769px){
+  .x-cta{
+    display: grid;
+    grid-template-columns: max-content max-content;  /* 左右を内容幅で */
+    justify-content: center;                         /* 中央に集合 */
+    column-gap: 22px; row-gap: 6px;
+    align-items: center;
+  }
+  .x-cta .xL{
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 6px;
+    min-width: 0;
+  }
+  .x-cta .xText{
+    white-space: nowrap;       /* 1行で見せる */
+    max-width: none;
+  }
+  .x-cta .xTel{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;       /* 小さめフォントの段差を解消 */
+    gap: 12px;                 /* TEL と 営業時間の間隔 */
+    white-space: nowrap;       /* 折返し禁止で1行固定 */
+    min-width: 0;
+  }
+  .x-cta .xTel a,
+  .x-cta .xTel .xHours{
+    display: inline-block;
+    white-space: nowrap;
+    line-height: inherit;
+  }
+  .x-cta .xBtn{
+    grid-column: 2; grid-row: 1 / span 2;
+    align-self: center;        /* 縦中央 */
+    justify-self: start;       /* 端に貼り付けず中央側へ */
+    white-space: nowrap;
+  }
+}
+
+/* 768px ちょうど：テキストは自然に2行OK、TEL&時間は横1行、右ボタンは縦中央＆中央寄せ */
+@media (width:768px){
+  .x-cta{
+    display: grid;
+    grid-template-columns: fit-content(44ch) auto;
+    justify-content: center;
+    column-gap: 22px; row-gap: 6px; align-items: center;
+  }
+  .x-cta .xText{
+    white-space: normal;       /* 折返しを許可（2行想定） */
+    max-width: 42ch; min-width: 0;
+  }
+  .x-cta .xTel{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  }
+  .x-cta .xBtn{
+    grid-column: 2; grid-row: 1 / span 2;
+    align-self: center; justify-self: start;
+  }
+}
+
+/* モバイル（〜767px）：テキスト → TEL → ボタン（ボタン最後） */
+@media (max-width:767px){
+  .x-cta{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    text-align: center;
+  }
+  .x-cta .xText{ order: 1; }
+  .x-cta .xTel{
+    order: 2;
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+    gap: 6px; margin-top: -4px;          /* 上との距離ちょい詰め（お好みで 0〜-8px） */
+    align-self: center; width: max-content;
+  }
+  .x-cta .xBtn{ order: 3; align-self: center; }
+}
+/* ===== works.html CTA：PC/1024 だけ最小復旧 ===== */
+
+/* 箱の見た目（全サイズ共通でOK：背景/角丸/内側余白/中央寄せ/幅の上限） */
+.x-cta{
+  max-width: 840px;                 /* ← 横幅を狭める（お好みで 720〜900px へ） */
+  width: 100%;
+  margin: clamp(16px,4vw,28px) auto;/* 中央配置 */
+  padding: clamp(16px,3.5vw,28px) 16px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  background: #0f1e2f;
+  color: #fff;
+}
+
+/* PC/1024：左に2段（テキスト / TEL&時間）＋右にボタン（縦中央）を中央寄せ */
+@media (min-width: 769px){
+  .x-cta{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;         /* 左右を中央付近に集合 */
+    column-gap: 22px;                /* 距離はここで調整 */
+    row-gap: 6px;
+    align-items: center;
+  }
+  .x-cta .xL{
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 6px;
+    min-width: 0;
+  }
+  .x-cta .xText{
+    margin: 0;
+    white-space: nowrap;             /* 1行に収める */
+  }
+  .x-cta .xTel{
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;             /* ベースライン段差を解消 */
+    gap: 12px;                       /* TELと営業時間の間隔 */
+    white-space: nowrap;             /* 折返し防止 */
+    min-width: 0;
+  }
+  /* “青字”対策：TELリンクはCTAの文字色を継承＆下線オフ */
+  .x-cta .xTel a{
+    color: inherit;
+    text-decoration: none;
+  }
+  .x-cta .xBtn{
+    grid-column: 2; 
+    grid-row: 1 / span 2;
+    align-self: center;              /* 縦中央 */
+    justify-self: start;             /* 端貼り付きを避け中央側へ */
+    white-space: nowrap;
+  }
+}
+
+/* 見た目をsmall相当に（HTMLが <span class="xHours"> でもOK） */
+.x-cta .xHours{
+  font-size: 0.95em;                 /* 他ページの<small>に寄せる */
+  opacity: .95;
+}
+/* ===== x-CTA：ボタンだけ縦中央（PC/タブレット＆768） ===== */
+
+
+
+/* 768pxちょうど */
+@media (width: 768px){
+  .x-cta .xBtn{
+    grid-row: 1 / -1 !important;
+    align-self: center !important;
+  }
+}
+
+/* （参考）リンク青対策をより確実にしたい場合 */
+.x-cta .xTel a:link,
+.x-cta .xTel a:visited{
+  color: inherit;
+  text-decoration: none;
+}
+/* ===== x-CTA：ボタンだけ縦中央（PC: 1025px〜 と 1024px だけ） ===== */
+
+/* ===== x-CTA：PC/1024 だけボタンを確実に“縦中央” ===== */
+
+/* PC（1025px〜） */
+@media (min-width: 1025px){
+  .x-cta{
+    display: grid !important;
+    grid-template-columns: max-content max-content; /* 既存の見た目を維持 */
+    grid-template-rows: auto auto !important;      /* ← 2行を用意するのがカギ */
+    align-items: center !important;
+  }
+  .x-cta .xL{  grid-column: 1; grid-row: 1 / 3 !important; }
+  .x-cta .xBtn{grid-column: 2; grid-row: 1 / 3 !important; align-self: center !important; }
+}
+
+/* 1024px ちょうど */
+@media (width: 1024px){
+  .x-cta{
+    display: grid !important;
+    grid-template-columns: fit-content(44ch) auto;  /* 1024は左を少し可変に */
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+  }
+  .x-cta .xL{  grid-column: 1; grid-row: 1 / 3 !important; }
+  .x-cta .xBtn{grid-column: 2; grid-row: 1 / 3 !important; align-self: center !important; }
+}
+/* PC（1025px〜） */
+@media (min-width: 1025px){
+  .x-cta .xBtn{
+    margin: 0 !important;                 /* ← ここで打消し */
+    grid-row: 1 / 3 !important;           /* 左2段ぶち抜き */
+    align-self: center !important;        /* 縦中央 */
+    justify-self: start !important;       /* 横は中央側へ */
+  }
+}
+
+/* 1024px ちょうど */
+@media (width: 1024px){
+  .x-cta .xBtn{
+    margin: 0 !important;                 /* ← ここで打消し */
+    grid-row: 1 / 3 !important;
+    align-self: center !important;
+    justify-self: start !important;
+  }
+}
+
+
+/* ===== 768pxちょうど：x-CTA を中央寄せ＆テキスト1行化＆青リンク解除 ===== */
+@media (width: 768px){
+  /* 中身を中央に寄せ、2カラムの距離はお好みで */
+  .x-cta{
+    display: grid;
+    grid-template-columns: max-content auto; /* 左=内容幅, 右=ボタン */
+    justify-content: center;                 /* 全体を中央に集合 */
+    column-gap: 22px;
+    row-gap: 6px;
+    align-items: center;
+  }
+
+  /* 「す。」だけ改行されないよう、1行に固定 */
+  .x-cta .xText{
+    margin: 0;
+    white-space: nowrap;     /* ← 1行化 */
+    max-width: none;
+    min-width: 0;
+  }
+
+  /* TEL＋営業時間は横1行のまま */
+  .x-cta .xTel{
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  /* 電話リンクの青字をやめてCTAの色に統一 */
+  .x-cta .xTel a:link,
+  .x-cta .xTel a:visited{
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* 他サイズと見た目を揃える“営業時間”（<span class="xHours">のままでOK） */
+.x-cta .xHours{ font-size: 0.95em; opacity: .95; }
+/* ===== 768pxちょうど：ボタンの縦中央 + margin-topを無効化 ===== */
+@media (width: 768px){
+  .x-cta{
+    display: grid !important;
+    grid-template-columns: fit-content(44ch) auto; /* 左=内容幅, 右=ボタン */
+    grid-template-rows: auto auto !important;     /* ← 2行を明示して中央基準を作る */
+    align-items: center !important;
+  }
+  .x-cta .xL{  grid-column: 1; grid-row: 1 / 3 !important; }  /* 左塊は2行ぶち抜き */
+  .x-cta .xBtn{
+    grid-column: 2; grid-row: 1 / 3 !important;   /* ボタンも2行ぶち抜き */
+    align-self: center !important;                 /* 自分の縦領域内で中央 */
+    justify-self: start !important;                /* 端貼り付きを防ぎ中央側へ */
+    margin: 0 !important;                          /* ← ここで margin-top を確実にゼロに */
+  }
+}
+/* 768px：左カラム(.xL)内のテキスト行とTEL行の間隔を広げる */
+@media (width: 768px){
+  .x-cta .xL{
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 4px;   /* ← お好みで 6〜12px に調整 */
+  }
+}
+
+/* ===== works.html の x-CTA：モバイルだけの最小調整 ===== */
+@media (max-width: 767px){
+  /* 箱を中央に・右ベタ付きを解消（幅を少しだけ縮めて中央寄せ） */
+  .x-cta{
+    width: min(94vw, 560px) !important;
+    margin-inline: auto !important;
+    text-align: center;                 /* デフォで中央寄せ */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;                /* 子要素も中央寄せ */
+  }
+
+  /* テキスト：自然な改行（1〜2行想定）＆読みやすい行幅 */
+  .x-cta .xText{
+    white-space: normal;                /* ← nowrapを無効化 */
+    max-width: 32ch;                    /* 行長を整えて“変な所での改行”を回避 */
+    line-height: 1.6;                   /* 行間を少し広めに */
+    margin: 0 auto;
+  }
+
+  /* TEL＋営業時間：中央寄せ・縦積み・行間少しタイトめ */
+  .x-cta .xTel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: -2px;                   /* 上との間隔を微調整（±0〜-6でお好み） */
+    align-self: center;
+  }
+
+  /* 電話リンクの“青字”を無効化（親の色＝白を継承） */
+  .x-cta .xTel a:link,
+  .x-cta .xTel a:visited{
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ボタンは中央に（余計なマージンを排除） */
+  .x-cta .xBtn{
+    align-self: center;
+    margin: 0;
+    width: max-content;
+  }
+
+  /* “営業時間”は他サイズと統一（<span class="xHours">でもOK） */
+  .x-cta .xHours{ font-size: 0.95em; opacity: .95; }
+}
+/* ===== x-CTA：モバイル強制リセット（右ベタ/左寄り/青リンク/改行の乱れを一括解消） ===== */
+@media (max-width: 767px){
+  /* 箱そのものを中央へ・右ベタ付きを解消 */
+  .x-cta{
+    width: min(94vw, 560px) !important;
+    margin: clamp(16px,4vw,28px) auto !important;
+    padding: clamp(16px,3.5vw,28px) 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    float: none !important;
+    clear: both !important;
+  }
+
+  /* テキスト：自然な改行に（行幅と行間を整える） */
+  .x-cta .xText{
+    white-space: normal !important;     /* ← nowrapを打ち消す */
+    max-width: 32ch !important;         /* 行の長さを制御（26–36chで調整可） */
+    line-height: 1.6 !important;
+    margin: 0 auto !important;
+  }
+
+  /* TEL＋営業時間：中央寄せ＆縦積み */
+  .x-cta .xTel{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+  }
+
+  /* 青リンクを禁止（親色=白を継承） */
+  .x-cta .xTel a:link,
+  .x-cta .xTel a:visited{
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  /* ボタンは中央。余計な上マージンを無効化 */
+  .x-cta .xBtn{
+    align-self: center !important;
+    margin: 0 !important;               /* ← .btn-gold の margin-top を打ち消し */
+    width: max-content !important;
+  }
+
+  /* “営業時間”の見た目を統一（<span class="xHours">でもOK） */
+  .x-cta .xHours{ font-size: .95em !important; opacity: .95 !important; }
+}
+
+/* ===== x-CTA：モバイル最終パッチ（横スクロール防止・中央配置・青リンク解除） ===== */
+@media (max-width: 767px){
+  .x-cta{
+    width: 100% !important;          /* ← vw を使わない */
+    max-width: 560px !important;     /* お好みで 520–600px に調整可 */
+    margin: clamp(16px,4vw,28px) auto !important;
+    padding: clamp(16px,3.5vw,28px) 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;  /* 中央寄せ */
+    text-align: center !important;
+  }
+
+  /* テキスト：自然な改行＋行幅＆行間の調整 */
+  .x-cta .xText{
+    white-space: normal !important;  /* nowrapを打ち消す */
+    max-width: 32ch !important;      /* 26–36chで好みに */
+    line-height: 1.6 !important;
+    margin: 0 auto !important;
+  }
+
+  /* TEL＋営業時間：中央寄せ・縦積み */
+  .x-cta .xTel{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+  }
+
+  /* 電話リンクの青字を禁止（親色を継承） */
+  .x-cta .xTel a:link,
+  .x-cta .xTel a:visited{
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  /* ボタン：中央・余計な上マージン無効化 */
+  .x-cta .xBtn{
+    align-self: center !important;
+    margin: 0 !important;            /* ← .btn-gold の margin-top を無効化 */
+    width: max-content !important;
+  }
+
+  /* “営業時間”の見た目統一（<span class="xHours">のままでOK） */
+  .x-cta .xHours{ font-size: .95em !important; opacity: .95 !important; }
+}
+/* ===== x-CTA：モバイルのTEL+営業時間を中央寄せに強制 ===== */
+@media (max-width: 767px){
+  .x-cta .xTel{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;   /* 横方向の中央寄せ */
+    text-align: center !important;    /* テキスト中央 */
+    align-self: center !important;    /* 親の中でも中央 */
+  }
+  .x-cta .xTel a,
+  .x-cta .xTel .xHours{
+    display: inline-block !important; /* block指定を打ち消す */
+    margin: 0 auto !important;        /* 中央に配置 */
+    text-align: center !important;
+  }
+}
+/* ===== x-CTA：モバイル（〜767px）で TEL+営業時間 を中央寄せにする本命修正 ===== */
+@media (max-width: 767px){
+  /* 親を flex 化：これで .xTel の align-self も効くようになるが、下で子側も中央寄せするのでどちらでもOK */
+  .x-cta .xL{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;   /* ← これで .xText も .xTel も中央揃え */
+    text-align: center !important;
+  }
+
+  /* 念押し：.xTel 自体と中身も中央寄せ */
+  .x-cta .xTel{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 2px !important;
+    margin: 0 !important;
+  }
+  .x-cta .xTel a,
+  .x-cta .xTel .xHours{
+    display: inline-block !important;
+    margin: 0 auto !important;
+  }
+}
+/* モバイル：テキストとTELの間に少し余白 */
+@media (max-width: 767px){
+  .x-cta .xL{
+    gap: 8px !important;  /* お好みで 6–12px に調整 */
+  }
+}
+/* x-cta内の電話リンクの色/下線を統一（全ページ共通） */
+.x-cta .xTel a:link,
+.x-cta .xTel a:visited { color: inherit; text-decoration: none; }
+
+.x-cta .xTel a:hover,
+.x-cta .xTel a:focus-visible { text-decoration: underline; }
+
+
+/* ===== service-governance CTA：PCだけテキスト行間を少し狭く ===== */
+@media (min-width: 1025px){
+  .x-cta .xText{
+    line-height: 1.25;  /* 目安：1.25〜1.4 の範囲で微調整可 */
+  }
+}
+
+/* ===== service-governance CTA：1024pxだけ 1行＋重なり解消（fit-content不使用） ===== */
+@media (width: 1024px){
+  .x-cta{
+    display: grid;
+    grid-template-columns: max-content max-content; /* 左=テキスト自然幅 / 右=ボタン */
+    justify-content: center;                        /* 全体を中央へ */
+    column-gap: 16px;                               /* ← 距離は必要最小限に */
+    row-gap: 6px;
+    align-items: center;
+  }
+
+  .x-cta .xL{ grid-column: 1; grid-row: 1 / 3; }
+
+  /* ← テキストは1行固定。わずかに縮めて収まりを作る */
+  .x-cta .xText{
+    white-space: nowrap;
+    font-size: 0.95em;           /* 0.94〜0.97emで微調整可 */
+    letter-spacing: -0.01em;     /* ほんの少しだけ詰める */
+    line-height: 1.30;           /* 行高はややタイトに */
+    margin: 0;
+  }
+
+  .x-cta .xTel{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  /* ← ボタンも横幅を少しだけ絞る（見た目はほぼ変わらず） */
+  .x-cta .xBtn{
+    grid-column: 2; grid-row: 1 / 3;
+    align-self: center; justify-self: start;
+    margin: 0;
+    padding-inline: 1.0em;       /* 0.95〜1.1emで微調整可 */
+    font-size: 0.95em;           /* テキストとバランスを取る */
+  }
+}
+/* ===== service-governance CTA：1024pxだけ行間を少し狭く ===== */
+@media (width: 1024px){
+  .x-cta .xText{
+    line-height: 1.26; /* 1.26〜1.30で微調整OK */
+  }
+}
+
+
+
+
+/* ===== service-governance CTA：768pxだけ「案件の…」から2行目＋重なり防止 ===== */
+@media (width: 768px){
+  .x-cta{
+    display: grid;
+    grid-template-columns: auto auto;   /* 左=内容幅 / 右=ボタン */
+    justify-content: center;
+    column-gap: 22px;                   /* 距離はお好みで 18〜26px */
+    row-gap: 6px;
+    align-items: center;
+  }
+  .x-cta .xL{ grid-column: 1; grid-row: 1 / 3; }
+
+  /* テキストは2行に。行間はややタイト、確実に2行にするため各行をblock化 */
+  .x-cta .xText{
+    margin: 0;
+    white-space: normal;
+    line-height: 1.36;                  /* 1.28〜1.36で微調整可 */
+  }
+  .x-cta .xText .xL1,
+  .x-cta .xText .xL2{ display: block; } /* ← 1行目／2行目を確定 */
+
+  /* TELは横1行固定、ボタンは縦中央＆余計なマージンなし */
+  .x-cta .xTel{
+    display: flex; flex-wrap: nowrap; align-items: center;
+    gap: 12px; white-space: nowrap; margin: 0;
+  }
+  .x-cta .xBtn{
+    grid-column: 2; grid-row: 1 / 3;
+    align-self: center; justify-self: start; margin: 0;
+  }
+}
+
+
+@media (max-width: 767px){
+  /* 2行目の中身を2ブロック化 → 「概要と」で改行 */
+  .x-cta .xText .xL2-1,
+  .x-cta .xText .xL2-2{ display: block; }
+}
+/* ===== service-governance CTA：モバイルだけ 1行目を「…予約制です。案件の概要と」に固定 ===== */
+@media (max-width: 767px){
+  /* 768で block にしている .xL1 / .xL2 を、このサイズでは inline に戻す */
+  .x-cta .xText .xL1,
+  .x-cta .xText .xL2{ display: inline !important; }
+
+  /* 1行目は xL1 + xL2-1 を“連結して折り返さない” */
+  .x-cta .xText .xL2-1{
+    display: inline !important;
+    white-space: nowrap !important;   /* ← ここで「予約制です。案件の概要と」を一塊に */
+  }
+
+  /* 2行目の先頭をここで確定 */
+  .x-cta .xText .xL2-2{ display: block !important; }
+}
+
+/* ===== x-CTA：モバイルのTEL＋営業時間の行間をタイトに ===== */
+@media (max-width: 767px){
+  .x-cta .xTel{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0 !important;              /* ← まず gap をゼロにリセット */
+    margin: 0 !important;
+  }
+  .x-cta .xTel a,
+  .x-cta .xTel .xHours{
+    display: inline-block !important;
+    margin: 0 !important;           /* 余計な上下マージンをゼロに */
+    padding: 0 !important;          /* 念のため内側余白もゼロに */
+    line-height: 1.30 !important;   /* ← 文字の上下をタイトに（1.22〜1.30で調整） */
+    text-align: center !important;
+  }
+
+  /* それでもまだ広く見えるときだけ微調整（任意） */
+  /* .x-cta .xTel .xHours{ margin-top: -2px !important; } */
+}
+
+@media (max-width: 767px){
+  /* 「に。」を前の文字とセットで折り返さない */
+  .x-cta--ip .xText .nb{ white-space: nowrap; }
+
+  /* 1行目に“に。”が乗る余白を少しだけ増やす（必要なら） */
+  .x-cta--ip .xText{ max-width: 34ch; }  /* 32ch→34ch。入らなければ 35–36ch に */
+}
+
+
+/* service-ip：PC/1024 の行間だけ調整（このCTA限定） */
+@media (min-width: 1025px){
+  .x-cta--ip .xText{ line-height: 1.0; }
+}
+/* 1024px を確実に拾う帯域（ズーム等の誤差対策） */
+@media (min-width: 1023px) and (max-width: 1025px){
+  .x-cta--ip .xText{ line-height: 1.2; }
+}
+
+/* モバイル：「に。」を前の語とセットで折り返さない（このCTA限定） */
+@media (max-width: 767px){
+  .x-cta--ip .xText .nb{ white-space: nowrap; }
+  /* もし1行目に乗り切らない時は、行幅をほんの少しだけ広げる */
+  /* .x-cta--ip .xText{ max-width: 34ch; }  */ /* 必要になったら解除して使ってね */
+}
+
+
+@media (max-width: 767px){
+  .x-cta--ip .xText{ max-width: 34ch; } /* 32→34〜36chで微調整 */
+}
+
+@media (max-width: 767px){
+  /* 「安全に。」をひとかたまりで折り返さない */
+  .x-cta--ip .xText .keep{ white-space: nowrap; }
 }
