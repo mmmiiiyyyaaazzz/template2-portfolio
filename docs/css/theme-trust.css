@@ -70,7 +70,7 @@ html{
   color:#fff;
   background:
     linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.68)),
-    url("../img/hero.jpeg") center 40%/cover no-repeat;
+    url("img/hero.jpeg") center 40%/cover no-repeat;
 }
 .t2-hero .inner{
   width:min(92vw,1100px);
@@ -1238,3 +1238,364 @@ br.sp-only{ display: none; }
   text-align: center;    /* 文字を中央に */
 }
 
+/* === works（実績ページ）— 区切り＆見やすさ ==================== */
+.p-works .t2-case{
+  padding-block: clamp(20px, 4vw, 32px);
+  border-top: 1px solid #e2e8f0;
+}
+.p-works .t2-case:first-of-type{ border-top: 0; }
+
+/* 画像を少し映えるように */
+.p-works .t2-case .t2-work-media{
+  margin-bottom: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+}
+
+/* タイトル・リードの間隔を少しだけ整える */
+.p-works .t2-case .t2-work-title{ margin: 6px 0 4px; }
+.p-works .t2-case .t2-work-excerpt{ margin: 0 0 8px; }
+
+/* === works：CTAの並び・距離感を全サイズで最適化 ============== */
+/* SP（〜767px）：縦並び・中央寄せ・テキストは読みやすい幅 */
+@media (max-width: 767px){
+  .p-works .t2-cta--article{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    justify-items: center;
+    text-align: center;
+    padding-block: 16px;
+  }
+  .p-works .t2-cta-text{
+    max-width: 40ch;      /* 読みやすい行幅 */
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .p-works .t2-cta--article .btn-gold{
+    width: auto;          /* 横いっぱいにしない */
+    padding: 10px 20px;
+  }
+}
+
+/* タブレット（768–1023px）：テキスト左／ボタン右、近め配置 */
+@media (min-width: 768px) and (max-width: 1023px){
+  .p-works .t2-cta--article{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto; /* 左は複数行OK／右はボタン実寸 */
+    align-items: center;
+    justify-content: center;
+    column-gap: 16px;                            /* 近づける */
+  }
+  .p-works .t2-cta-text{ line-height: 1.6; }
+}
+
+/* PC（>=1025px）：上質な“横並び1行”＆中央寄せ */
+@media (min-width: 1025px){
+  .p-works .t2-cta--article{
+    display: grid;
+    grid-template-columns: max-content auto;  /* テキストは実寸、右にボタン */
+    align-items: baseline;
+    justify-content: center;                  /* セット全体を中央へ */
+    column-gap: 30px;                         /* 余裕のある距離感 */
+  }
+  .p-works .t2-cta-text{
+    white-space: nowrap;                      /* 1行で凛と見せる */
+    margin: 0;
+  }
+}
+
+/* CTAの先頭テキスト(p)の体裁をそろえる */
+site-cta .t2-cta .t2-cta__title{
+  font-weight:500;
+  font-size:clamp(1.05rem,1.8vw,1.25rem);
+  line-height:1.45;
+  margin:0 0 .25em;
+  letter-spacing:normal;
+}
+
+/* 孤立1文字対策：本文幅を少し広げる（!importantで旧CSSを上書き） */
+site-cta .t2-cta .t2-cta__body{ max-width:48ch !important; }
+
+/* === CTA 最小リセット＆体裁（旧CSSが残っていても効く） === */
+site-cta .t2-cta{
+  background:#0b1e3a; color:#fff; border-radius:16px;
+  letter-spacing:normal !important; text-transform:none !important;
+}
+site-cta .t2-cta .inner{
+  width:min(96vw, var(--t2-container,1100px));
+  margin-inline:auto; padding:clamp(16px,3vw,28px);
+  display:grid; gap:16px; align-items:center;
+  grid-template-columns:1fr; /* SPは1列 */
+}
+
+/* 文字まわり：両方16pxに固定して“差”を消す */
+site-cta .t2-cta__title,
+site-cta .t2-cta__lead{
+  margin:0; line-height:1.6;
+  font-size:16px !important;  /* ← ここで完全に揃える */
+  white-space:normal !important; overflow-wrap:anywhere; word-break:normal;
+  letter-spacing:normal !important;
+}
+site-cta .t2-cta__title{ font-weight:500 !important; margin:0 0 .25em; }
+site-cta .t2-cta__lead { font-weight:400 !important; opacity:.94; }
+
+/* 可読幅：<br>不要で自然に折り返し（孤立1文字を出しづらく） */
+site-cta .t2-cta__body{ max-width:48ch !important; }
+@supports (text-wrap: balance){
+  site-cta .t2-cta__title{ text-wrap:balance; }
+}
+
+/* ボタン：装飾復活＆中央寄せ（SP） */
+site-cta .t2-cta__action{
+  display:flex; justify-content:center;
+}
+site-cta .t2-cta .btn{
+  display:inline-block; padding:.8em 1.4em; border-radius:999px;
+  background:#fff; color:#0b1e3a; font-weight:700; text-decoration:none;
+}
+
+/* 768px以上は2列＋ボタン右寄せ */
+@media (min-width:768px){
+  site-cta .t2-cta .inner{ grid-template-columns:1fr auto; }
+  site-cta .t2-cta__action{ justify-content:flex-end; }
+}
+
+/* （任意）ゴールドボタンにしたい時：<site-cta data-variant="gold"> */
+site-cta[data-variant="gold"] .t2-cta .btn{ background:#C9A74D; color:#fff; }
+
+/* ========= team.html CTA（768px以上だけ整える）========= */
+/* ベース（モバイル想定）は今のまま使う：ここでは上書きしない */
+
+/* タブレット以上：privacy.htmlと同じ2カラムにする */
+@media (min-width:768px){
+  .cta-local{
+    display:grid;
+    grid-template-columns:max-content auto; /* 本文(左) + ボタン(右) */
+    column-gap:30px;
+    align-items:baseline;        /* 行のベースライン揃え */
+    justify-content:center;      /* 全体を中央寄せ */
+    justify-items:stretch;       /* 各カラムは左寄せ */
+    max-width:840px;             /* privacyと同じ幅上限 */
+    margin-inline:auto;          /* 中央に配置 */
+    padding-block:clamp(16px,3.5vw,28px);
+    padding-inline:16px;
+    border-radius:14px;
+    background:#0f1e2f;
+    color:#fff;
+    box-sizing:border-box;
+  }
+  .cta-local__body{
+    /* 1行目の“1文字だけ改行”を起こしにくくするため、文の横幅を調整 */
+    max-width:44ch;
+  }
+  .cta-local__title,
+  .cta-local__lead{
+    font-size:16px; line-height:1.6;
+    letter-spacing:normal; white-space:normal;
+    overflow-wrap:anywhere; word-break:break-word;
+    margin:0;
+  }
+  .cta-local__title{ font-weight:500; margin:0 0 .2em; }
+  .cta-local__lead { font-weight:400; opacity:.94; }
+
+  /* ボタンは右カラムの左寄せ（privacyと同じ“本文の右隣に並ぶ”挙動） */
+  .cta-local__action{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    width:100%;
+  }
+  .cta-local__btn{
+    display:inline-block; padding:.8em 1.4em; border-radius:999px;
+    font-weight:700; text-decoration:none;
+    background:#fff; color:#0f1e2f;  /* 白ボタン */
+  }
+  .cta-local__btn--gold{
+    background:#C9A74D; color:#fff; /* 金ボタンにしたいとき */
+  }
+}
+
+/* ちょうど1024px幅の時もprivacyの指定に合わせたい場合（任意で有効化） */
+/*
+@media (width:1024px){
+  .cta-local{ column-gap:30px; align-items:baseline; }
+}
+*/
+
+/* PC＆1024pxでは タイトル＋リードを “1行” にする */
+/* モバイル（〜767px）は既存のまま何もしない */
+
+@media (width:1024px), (min-width:1025px){
+  /* 左カラムの本文ブロックを横並び＆改行禁止に */
+  .cta-local__body{
+    display: flex;
+    align-items: baseline;   /* 文字のベースラインを揃える */
+    gap: .5em;               /* タイトルとリードの間隔 */
+    white-space: nowrap;     /* ← ここが肝：1行にする */
+    max-width: none;         /* 以前付けた max-width を無効化して折返しを防ぐ */
+  }
+  /* 2つの<p>を横並び扱いに */
+  .cta-local__title,
+  .cta-local__lead{
+    display: inline;
+    margin: 0;               /* 念のため段落の余白をゼロに */
+  }
+}
+
+/* ===== CTA-LOCAL: Mobile base (全幅共通の土台) ===== */
+.cta-local{
+  background:#0f1e2f; color:#fff; border-radius:14px;
+  width:100%; max-width:840px; margin:clamp(20px,4vw,36px) auto 0;
+  padding:clamp(16px,3.5vw,28px) 16px;
+  display:grid; grid-template-columns:1fr; row-gap:16px;
+  align-items:baseline; justify-items:center;
+  gap:clamp(10px,2vw,14px);
+  box-sizing:border-box;
+}
+.cta-local__title,.cta-local__lead{
+  margin:0; font-size:16px; line-height:1.6;
+  letter-spacing:normal; white-space:normal;
+  overflow-wrap:anywhere; word-break:break-word;
+}
+.cta-local__title{ font-weight:500; margin:0 0 .2em; }
+.cta-local__lead { font-weight:400; opacity:.94; }
+.cta-local__action{ width:100%; display:flex; justify-content:center; }
+.cta-local__btn{
+  display:inline-block; padding:.8em 1.4em; border-radius:999px;
+  background:#fff; color:#0f1e2f; font-weight:700; text-decoration:none;
+}
+.cta-local__btn--gold{ background:#C9A74D; color:#fff; }
+
+/* ===== CTA-LOCAL: PC/1024 の1行化＆2カラム配置 ===== */
+@media (min-width:768px){
+  .cta-local{
+    grid-template-columns:max-content auto;
+    column-gap:30px; align-items:baseline;
+    justify-content:center; justify-items:stretch;
+  }
+  .cta-local__action{ justify-content:flex-start; }
+}
+
+/* タイトル＋リードを横並び＆折返し禁止（1024とPC） */
+@media (width:1024px), (min-width:1025px){
+  .cta-local__body{
+    display:flex; align-items:baseline; gap:.5em;
+    white-space:nowrap;      /* ← 1行固定 */
+    max-width:none;          /* ← 以前の max-width を無効化 */
+  }
+  .cta-local__title, .cta-local__lead{
+    display:inline; margin:0;
+  }
+}
+
+/* 1) 全サイズ：CTAの上の余白を少し増やす */
+.cta-local{
+  margin-top: clamp(28px, 5vw, 56px);
+}
+
+/* 2) 768–1023px：内側の高さを下げてコンパクトに（モバイルは触らない） */
+@media (min-width:768px) and (max-width:1023px){
+  .cta-local{
+    padding-block: clamp(10px, 2.2vw, 18px); /* 縦の余白を軽く */
+    row-gap: 12px;                            /* 要素間の縦間隔も少し詰める */
+    column-gap: 24px;                         /* 左右カラム間を30→24pxに */
+  }
+  /* ボタンが大きく見える場合だけ、下を有効化
+  .cta-local__btn{ padding: .68em 1.1em; }
+  */
+}
+/* ===== 768–1023px：ボタンの縦位置が上に見える問題の修正 ===== */
+@media (min-width:768px) and (max-width:1023px){
+  /* グリッド行内の配置を baseline → center に */
+  .cta-local{
+    align-items: center;         /* ← ここが肝 */
+  }
+
+  /* 左（本文）も右（ボタン）も行中央に揃える */
+  .cta-local__body{ align-self: center; }
+
+  .cta-local__action{
+    display: flex;               /* 既にflexならそのままでOK */
+    justify-content: flex-start; /* 右カラム内は左寄せのまま */
+    align-items: center;         /* ← ボタン行の縦センター */
+  }
+
+  /* ボタン内の文字を厳密に中央にする（baseline影響を断つ） */
+  .cta-local__btn{
+    display: inline-flex;        /* ← inline-block → inline-flex */
+    align-items: center;         /* 縦センター */
+    line-height: 1;              /* 余計な行高を排除 */
+    /* paddingはすでに設定済み。見た目で高すぎ/低すぎなら微調整OK
+    padding: .76em 1.3em;
+    */
+  }
+
+  /* 内側余白と間隔（均等感が出るよう軽めに調整） */
+  .cta-local{
+    padding-block: clamp(12px, 2.2vw, 18px); /* 先の設定がある場合でも上書きになる */
+    row-gap: 12px;
+    column-gap: 24px;
+  }
+}
+/* ===== CTA-LOCAL: タブレットの左右を詰めて、上下は少し広げる ===== */
+@media (min-width:768px) and (max-width:1023px){
+  .cta-local{
+    padding-inline: 10px;                      /* ← 左右を細く */
+    padding-block: clamp(18px, 2.6vw, 24px);   /* ← 上下は少し増やす */
+    column-gap: 20px;                          /* ← 左右カラム間もやや詰め */
+  }
+}
+
+/* ===== CTA-LOCAL: 1024/PC も左右をやや詰めて、上下は少し増やす ===== */
+@media (width:1024px), (min-width:1025px){
+  .cta-local{
+    padding-inline: 12px;                      /* ← 左右を細く（デフォ16px→12px） */
+    padding-block: clamp(18px, 2.2vw, 26px);   /* ← 上下に少しだけ余裕 */
+  }
+}
+
+/* 表示切替ユーティリティ */
+.u-show-768 { display: none; }
+.u-hide-768 { display: inline; }
+
+@media (min-width:768px) and (max-width:1023px){
+  .u-show-768 { display: inline; }
+  .u-hide-768 { display: none; }
+}
+
+
+/* === 電話ブロック（純HTML版CTA向け／最小追記） === */
+.t2-cta.t2-cta--article .t2-cta-tel{
+  display:flex;
+  flex-direction:column;
+  align-items:center;   /* モバイル＝中央 */
+  gap:2px;
+  text-align:center;
+  margin-top:4px;       /* ボタンとの間を少しだけ */
+}
+.t2-cta.t2-cta--article .t2-cta-tel__link{
+  color:inherit; text-decoration:none;
+  font-weight:700; font-size:15px; line-height:1.5;
+}
+.t2-cta.t2-cta--article .t2-cta-tel__link:hover,
+.t2-cta.t2-cta--article .t2-cta-tel__link:focus{
+  text-decoration:underline;
+}
+.t2-cta.t2-cta--article .t2-cta-tel__hours{
+  font-size:13px; opacity:.85;
+}
+
+/* 1024px以上：テキスト左／ボタン右のまま、電話も右側に寄せる */
+@media (min-width:1024px){
+  .t2-cta.t2-cta--article .t2-cta-tel{
+    align-items:flex-end;  /* 右寄せ */
+    text-align:right;
+  }
+}
+
+/* （必要なら）PCはCTAテキストを必ず1行に固定するオプション */
+@media (min-width:1024px){
+  .t2-cta .t2-cta-text{ white-space:nowrap; }
+}
