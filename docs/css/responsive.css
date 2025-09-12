@@ -2131,3 +2131,21 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
   /* 「安全に。」をひとかたまりで折り返さない */
   .x-cta--ip .xText .keep{ white-space: nowrap; }
 }
+
+
+/* responsive.css の末尾（theme-trust.css より後に読み込む） */
+.t2-page-hero{
+  position: relative;
+  min-height: 62vh;
+  display: grid;
+  place-items: end start;
+  color: #fff;
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+.t2-page-hero--news{
+  /* CSSは docs/css/ にある → 画像は ../img/... で参照 */
+  background-image: url("../img/service-1.jpeg");
+}
+
