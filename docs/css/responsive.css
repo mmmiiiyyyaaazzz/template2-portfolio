@@ -2133,19 +2133,32 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 }
 
 
-/* responsive.css の末尾（theme-trust.css より後に読み込む） */
+/* 共通：ヒーローの箱（高さ/配置） */
 .t2-page-hero{
   position: relative;
   min-height: 62vh;
   display: grid;
-  place-items: end start;
+  place-items: end start;   /* 左下にテキストを配置 */
   color: #fff;
+
+  /* 画像の描画設定（どの背景指定が来ても最後に効かせるため別プロパティに分解） */
   background-size: cover;
   background-position: center 40%;
   background-repeat: no-repeat;
 }
+
+/* ページ別の背景画像（！important で theme-trust の background: を上書き） */
 .t2-page-hero--news{
-  /* CSSは docs/css/ にある → 画像は ../img/... で参照 */
-  background-image: url("../img/service-1.jpeg");
+  background-image: url("../img/service-1.jpeg") !important;
 }
+
+/* グラデは別レイヤーに（background: の競合を避ける） */
+.t2-page-hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.68));
+  z-index: 0;
+}
+.t2-page-hero > *{ position: relative; z-index: 1; } /* テキストを前面へ */
 
