@@ -2180,4 +2180,9 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 /* 必要に応じて増やす */
 
 
+/* ガバナンス用ヒーロー画像（実ファイル名に合わせて .jpg/.jpeg を選んでね） */
+.t2-page-hero--governance{
+  background-image: url('../img/service-3.jpg') !important;
+}
+
 
