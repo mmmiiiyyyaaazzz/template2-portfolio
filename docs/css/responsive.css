@@ -2162,3 +2162,20 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 }
 .t2-page-hero > *{ position: relative; z-index: 1; } /* テキストを前面へ */
 
+.t2-page-hero{
+  position: relative;
+  min-height: 62vh;
+  display: grid;
+  place-items: end start;
+  color: #fff;
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+
+/* ページ別ヒーロー（CSSは docs/css/ → 画像は ../img/ で参照） */
+.t2-page-hero--news{      background-image: url('../img/service-1.jpeg'); }
+.t2-page-hero--corporate{ background-image: url('../img/service-2.jpeg'); }
+.t2-page-hero--ip{        background-image: url('../img/service-3.jpg'); }
+/* 必要に応じて増やす */
+
