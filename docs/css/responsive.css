@@ -2195,5 +2195,31 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
   background-image: url('../img/service-3.jpg') !important; /* ← フォルダは img、拡張子は .jpg */
 }
 
+/* team のヒーロー画像（CSSは docs/css/ → 画像は ../img/… で参照） */
+.t2-page-hero--team{
+  background-image: url('../img/hero.jpeg?v=1') !important;
+  background-position: center 38%;     /* 見せたい位置に微調整 */
+  min-height: 40vh;                    /* VS寄りに少し低め（32〜44vhで好み調整） */
+}
+
+/* 暗さを“軽め”に上書き（既存の ::before を弱める） */
+.t2-page-hero--light::before{
+  content:"";
+  position:absolute; inset:0; z-index:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.40)) !important;
+}
+
+/* ビネットも控えめに（入れていない場合は無害） */
+.t2-page-hero--light::after{
+  content:"";
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  box-shadow:
+    inset 0 0 90px rgba(0,0,0,.22),
+    inset 0 -45px 60px rgba(0,0,0,.18);
+}
+
+/* 子要素は前面へ（オーバーレイの上にテキストを出す） */
+.t2-page-hero--light > *{ position:relative; z-index:1; }
+
 
 
