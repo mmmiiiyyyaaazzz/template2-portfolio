@@ -118,8 +118,41 @@
   </div>
 </footer>
 <script src="base.js" defer></script>
+  <script>
+  // クリック計測をまとめて付与（GA4が入っている前提）
+  window.addEventListener('DOMContentLoaded', function () {
+    function ev(name, params){ try{ gtag('event', name, params); }catch(e){} }
+
+    // どこからのクリックか自動で推定（必要なら data-loc で上書き可）
+    function where(a){
+      if (a.dataset.loc) return a.dataset.loc;
+      if (a.closest('.t2-header')) return 'header';
+      if (a.closest('.t2-footer')) return 'footer';
+      if (a.closest('.t2-cta,.x-cta')) return 'cta';
+      if (a.closest('.t2-page-hero')) return 'hero';
+      return 'body';
+    }
+
+    // お問い合わせ導線（#contact へ飛ぶリンクやフォーム直リンク）
+    document.querySelectorAll('a[href*="#contact"],a[href*="forms.gle"],a[href*="docs.google.com/forms"]').forEach(a=>{
+      a.addEventListener('click', ()=> ev('contact_click', {location: where(a)}));
+    });
+
+    // TELリンク
+    document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
+      a.addEventListener('click', ()=> ev('tel_click', {location: where(a)}));
+    });
+
+    // メールリンク（ある場合）
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+      a.addEventListener('click', ()=> ev('mail_click', {location: where(a)}));
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
