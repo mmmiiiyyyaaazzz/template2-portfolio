@@ -217,27 +217,27 @@
   <div class="inner">
     <div class="t2-cta t2-cta--article">
       <p class="t2-cta-text">
-  ご相談はフォームまたはお電話にて<br class="sp-only">承ります。<br class="tab-only">初回相談は無料です。
-</p>
+        ご相談はフォームまたはお電話にて<br class="sp-only">承ります。<br class="tab-only">初回相談は無料です。
+      </p>
 
-      <a class="btn-gold" href="index.html#contact">お問い合わせへ</a>
+      <!-- ボタン：場所とイベント種別を明示 -->
+      <a class="btn-gold"
+         href="index.html#contact"
+         data-loc="cta"
+         data-track="contact">お問い合わせへ</a>
 
-      <!-- ▼ ここから追加：電話番号＋営業時間（JSは使いません） -->
-<div class="t2-cta-tel">
-  <a class="t2-cta-tel__link" href="tel:0312345678" aria-label="電話 03 1234 5678">
-    TEL 03-1234-5678
-  </a>
-  <small class="t2-cta-tel__hours">
-    平日 9:00–18:00
-  </small>
-</div>
-
-
-
-      <!-- ▲ ここまで追加 -->
+      <!-- TEL：場所ラベルだけ付与 -->
+      <div class="t2-cta-tel">
+        <a class="t2-cta-tel__link"
+           href="tel:0312345678"
+           data-loc="cta"
+           aria-label="電話 03 1234 5678">TEL 03-1234-5678</a>
+        <small class="t2-cta-tel__hours">平日 9:00–18:00</small>
+      </div>
     </div>
   </div>
 </section>
+
 
 
   </main>
@@ -296,6 +296,7 @@
 
 </body>
 </html>
+
 
 
 
