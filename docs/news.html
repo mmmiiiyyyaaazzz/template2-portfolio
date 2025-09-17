@@ -299,7 +299,6 @@ document.addEventListener('click', function(e){
   gtag('event','tel_click',{
     location: loc,
     transport_type: 'beacon',
-    debug_mode: true,                     // 確認後は外してOK
     event_callback: go                    // 送信完了後に遷移
   });
 
@@ -309,6 +308,7 @@ document.addEventListener('click', function(e){
 
 </body>
 </html>
+
 
 
 
