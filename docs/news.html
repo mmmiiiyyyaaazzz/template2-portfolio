@@ -7,14 +7,7 @@
   <link rel="stylesheet" href="css/normalize.css?v=6">
   <link rel="stylesheet" href="css/theme-trust.css?v=6">
   <link rel="stylesheet" href="css/responsive.css?v=6">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5NZJY385Y6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-5NZJY385Y6'); // ←上と同じID
-</script>
-
+  
 <script>
 (function(){
   function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
@@ -221,10 +214,11 @@
       </p>
 
       <!-- ボタン：場所とイベント種別を明示 -->
-      <a class="btn-gold"
-         href="index.html#contact"
-         data-loc="cta"
-         data-track="contact">お問い合わせへ</a>
+     <a class="t2-cta-tel__link"
+   href="tel:0312345678"
+   data-loc="cta"
+   aria-label="電話 03 1234 5678">TEL 03-1234-5678</a>
+
 
       <!-- TEL：場所ラベルだけ付与 -->
       <div class="t2-cta-tel">
@@ -284,17 +278,8 @@
     document.querySelectorAll('a[href*="#contact"],a[href*="forms.gle"],a[href*="docs.google.com/forms"]').forEach(a=>{
       a.addEventListener('click', ()=> ev('contact_click', {location: where(a)}));
     });
-
-    // TELリンク
-    document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
-      a.addEventListener('click', ()=> ev('tel_click', {location: where(a)}));
-    });
-
-    // メールリンク（ある場合）
-    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
-      a.addEventListener('click', ()=> ev('mail_click', {location: where(a)}));
-    });
-  });
+ });
+  
 </script>
 <script>
 /* TELクリックは遷移が速いので、送信→遷移の順に保証する */
@@ -324,6 +309,7 @@ document.addEventListener('click', function(e){
 
 </body>
 </html>
+
 
 
 
