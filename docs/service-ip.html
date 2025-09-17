@@ -15,6 +15,33 @@
   gtag('js', new Date());
   gtag('config', 'G-5NZJY385Y6'); // ←上と同じID
 </script>
+
+  <script>
+  // 全ページ共通：クリック計測（GA4のgtagが入っている前提）
+  window.addEventListener('DOMContentLoaded', function () {
+    const ev = (name, params) => { try { gtag('event', name, params); } catch(e){} };
+    const where = a => a.dataset.loc
+      || (a.closest('.t2-header') ? 'header'
+      : a.closest('.t2-footer') ? 'footer'
+      : a.closest('.t2-cta, .x-cta') ? 'cta' : 'body');
+
+    // お問い合わせ導線（#contact / Googleフォーム）
+    document.querySelectorAll('a[href*="#contact"],a[href*="forms.gle"],a[href*="docs.google.com/forms"]').forEach(a=>{
+      a.addEventListener('click', ()=> ev('contact_click', { location: where(a) }));
+    });
+
+    // 電話リンク
+    document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
+      a.addEventListener('click', ()=> ev('tel_click', { location: where(a) }));
+    });
+
+    // メールリンク（ある場合）
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+      a.addEventListener('click', ()=> ev('mail_click', { location: where(a) }));
+    });
+  });
+</script>
+
 </head>
 <body>
   <header class="t2-header">
@@ -131,5 +158,6 @@
 
 </body>
 </html>
+
 
 
