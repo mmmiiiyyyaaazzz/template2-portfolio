@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ホーム | 〇〇事務所">
 <meta name="twitter:description" content="中小企業の企業法務・ガバナンス・知財を支援。初回相談は無料。">
-<meta name="twitter:image" content="https://あなた.github.io/リポジトリ/img/ogp.png">
+<meta name="twitter:image" content="https://mmmiiiyyyaaazzz.github.io/template2-portfolio/img/ogp.png">
 
 <!-- 正規URL -->
 <link rel="canonical" href="https://mmmiiiyyyaaazzz.github.io/template2-portfolio/index.html">
@@ -48,47 +48,6 @@
   gtag('js', new Date());
   gtag('config', 'G-5NZJY385Y6'); // ←上と同じID
 </script>
-
- <script>
-(function(){
-  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
-  ready(function(){
-    var hasGtag = (typeof window.gtag === 'function');
-
-    // どこ由来か推定（data-loc で上書き可）
-    function where(a){
-      if (a.dataset.loc) return a.dataset.loc;
-      if (a.closest('.t2-header')) return 'header';
-      if (a.closest('.t2-footer')) return 'footer';
-      if (a.closest('.t2-cta, .x-cta')) return 'cta';
-      if (a.closest('.t2-page-hero')) return 'hero';
-      return 'body';
-    }
-
-    // クリックを「委譲」で一括捕捉（動的要素/遷移前でも拾いやすい）
-    document.addEventListener('click', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(!a) return;
-      var href = (a.getAttribute('href')||'').toLowerCase();
-
-      var isContact = a.dataset.track === 'contact'
-        || href.indexOf('#contact') !== -1
-        || href.indexOf('forms.gle') !== -1
-        || href.indexOf('docs.google.com/forms') !== -1;
-
-      var isTel = href.indexOf('tel:') === 0;
-      var isMail = href.indexOf('mailto:') === 0;
-
-      if(!hasGtag) return; // GAが無いページでは何もしない
-
-      if (isContact)  gtag('event','contact_click',{ location: where(a) });
-      if (isTel)      gtag('event','tel_click',    { location: where(a) });
-      if (isMail)     gtag('event','mail_click',   { location: where(a) });
-    }, true); // ★ capture: true で遷移前に実行
-  });
-})();
-</script>
-
 
 </head>
 <body>
@@ -565,6 +524,7 @@
 </body>
 
 </html>
+
 
 
 
