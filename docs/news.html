@@ -293,9 +293,35 @@
     });
   });
 </script>
+<script>
+/* TELクリックは遷移が速いので、送信→遷移の順に保証する */
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+  if(!a || typeof window.gtag !== 'function') return;
+
+  var href = a.getAttribute('href');
+  var loc  = a.dataset.loc || (a.closest('.t2-header') ? 'header'
+             : a.closest('.t2-footer') ? 'footer'
+             : a.closest('.t2-cta, .x-cta') ? 'cta' : 'body');
+
+  e.preventDefault();                     // いったん遷移ストップ
+  var jumped = false;
+  function go(){ if(!jumped){ jumped = true; location.href = href; } }
+
+  gtag('event','tel_click',{
+    location: loc,
+    transport_type: 'beacon',
+    debug_mode: true,                     // 確認後は外してOK
+    event_callback: go                    // 送信完了後に遷移
+  });
+
+  setTimeout(go, 800);                    // 安全装置（callback来なくても遷移）
+}, true);
+</script>
 
 </body>
 </html>
+
 
 
 
