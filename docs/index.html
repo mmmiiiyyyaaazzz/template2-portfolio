@@ -31,31 +31,46 @@
   gtag('config', 'G-5NZJY385Y6'); // ←上と同じID
 </script>
 
-  <script>
-  // 全ページ共通：クリック計測（GA4のgtagが入っている前提）
-  window.addEventListener('DOMContentLoaded', function () {
-    const ev = (name, params) => { try { gtag('event', name, params); } catch(e){} };
-    const where = a => a.dataset.loc
-      || (a.closest('.t2-header') ? 'header'
-      : a.closest('.t2-footer') ? 'footer'
-      : a.closest('.t2-cta, .x-cta') ? 'cta' : 'body');
+ <script>
+(function(){
+  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var hasGtag = (typeof window.gtag === 'function');
 
-    // お問い合わせ導線（#contact / Googleフォーム）
-    document.querySelectorAll('a[href*="#contact"],a[href*="forms.gle"],a[href*="docs.google.com/forms"]').forEach(a=>{
-      a.addEventListener('click', ()=> ev('contact_click', { location: where(a) }));
-    });
+    // どこ由来か推定（data-loc で上書き可）
+    function where(a){
+      if (a.dataset.loc) return a.dataset.loc;
+      if (a.closest('.t2-header')) return 'header';
+      if (a.closest('.t2-footer')) return 'footer';
+      if (a.closest('.t2-cta, .x-cta')) return 'cta';
+      if (a.closest('.t2-page-hero')) return 'hero';
+      return 'body';
+    }
 
-    // 電話リンク
-    document.querySelectorAll('a[href^="tel:"]').forEach(a=>{
-      a.addEventListener('click', ()=> ev('tel_click', { location: where(a) }));
-    });
+    // クリックを「委譲」で一括捕捉（動的要素/遷移前でも拾いやすい）
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a');
+      if(!a) return;
+      var href = (a.getAttribute('href')||'').toLowerCase();
 
-    // メールリンク（ある場合）
-    document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
-      a.addEventListener('click', ()=> ev('mail_click', { location: where(a) }));
-    });
+      var isContact = a.dataset.track === 'contact'
+        || href.indexOf('#contact') !== -1
+        || href.indexOf('forms.gle') !== -1
+        || href.indexOf('docs.google.com/forms') !== -1;
+
+      var isTel = href.indexOf('tel:') === 0;
+      var isMail = href.indexOf('mailto:') === 0;
+
+      if(!hasGtag) return; // GAが無いページでは何もしない
+
+      if (isContact)  gtag('event','contact_click',{ location: where(a) });
+      if (isTel)      gtag('event','tel_click',    { location: where(a) });
+      if (isMail)     gtag('event','mail_click',   { location: where(a) });
+    }, true); // ★ capture: true で遷移前に実行
   });
+})();
 </script>
+
 
 </head>
 <body>
@@ -532,6 +547,7 @@
 </body>
 
 </html>
+
 
 
 
