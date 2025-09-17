@@ -229,9 +229,12 @@
       <!-- TEL：場所ラベルだけ付与 -->
       <div class="t2-cta-tel">
         <a class="t2-cta-tel__link"
-           href="tel:0312345678"
-           data-loc="cta"
-           aria-label="電話 03 1234 5678">TEL 03-1234-5678</a>
+   href="tel:0312345678"
+   data-loc="cta"
+   onclick="gtag('event','tel_click',{location:this.dataset.loc||'cta'});">
+  TEL 03-1234-5678
+</a>
+
         <small class="t2-cta-tel__hours">平日 9:00–18:00</small>
       </div>
     </div>
@@ -321,6 +324,7 @@ document.addEventListener('click', function(e){
 
 </body>
 </html>
+
 
 
 
