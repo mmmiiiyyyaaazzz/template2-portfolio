@@ -6,7 +6,7 @@ FAQ / News / お問い合わせフォームを備えたコーポレート想定�
 - Source: このリポジトリ
 
 ## 特徴
-- レイアウト: CSS Grid / Flex（再利用ユーティリティ `snippets.css`）
+- レイアウト: CSS Grid / Flex
 - セクション: Hero / About / Services / FAQ / News / Works / Flow / Access / Contact
 - アクセシビリティ: スキップリンク、フォーム完了メッセージ整備予定
 
@@ -14,18 +14,18 @@ FAQ / News / お問い合わせフォームを備えたコーポレート想定�
 /
 ├─ index.html
 ├─ css/
-│ ├─ snippets.css
-│ └─ theme.css
-└─ img/
-   └─ screenshot-hero.jpg
+│  └─ （使用中のCSSファイルを配置：例 `theme.css`, `responsive.css` など）
+├─ docs/
+│  └─ img/
+│     └─ template02.png
+└─ （必要な画像・スクリプトなど）
 
 ## 使い方
 1. ZIPダウンロード or `git clone`
 2. `index.html` をブラウザで開く（ビルド不要）
-3. `css/snippets.css` の `:root` 変数（色・余白・幅）でトーン調整
 
 ## スクリーンショット
-![Template 02](./img/screenshot-hero.jpg)
+![Template 02](./docs/img/template02.png)
 
 ## 今後の予定
 - フォーム完了メッセージに `aria-live` 付与
