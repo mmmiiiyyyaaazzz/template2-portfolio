@@ -70,7 +70,7 @@ html{
   color:#fff;
   background:
     linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.68)),
-    url("../img/hero.jpeg") center 40%/cover no-repeat;
+    url("../img/hero02.jpg") center 40%/cover no-repeat;
 }
 .t2-hero .inner{
   width:min(92vw,1100px);
@@ -1599,4 +1599,5 @@ site-cta[data-variant="gold"] .t2-cta .btn{ background:#C9A74D; color:#fff; }
 @media (min-width:1024px){
   .t2-cta .t2-cta-text{ white-space:nowrap; }
 }
+
 
