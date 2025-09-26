@@ -2149,7 +2149,7 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 
 /* ページ別の背景画像（！important で theme-trust の background: を上書き） */
 .t2-page-hero--news{
-  background-image: url("../img/service-1.jpeg") !important;
+  background-image: url("../img/service-01.jpg") !important;
 }
 
 /* グラデは別レイヤーに（background: の競合を避ける） */
@@ -2174,30 +2174,30 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 }
 
 /* ページ別ヒーロー（CSSは docs/css/ → 画像は ../img/ で参照） */
-.t2-page-hero--news{      background-image: url('../img/service-1.jpeg'); }
-.t2-page-hero--corporate{ background-image: url('../img/service-2.jpeg'); }
-.t2-page-hero--ip{        background-image: url('../img/service-3.jpg'); }
+.t2-page-hero--news{      background-image: url('../img/service-01.jpg'); }
+.t2-page-hero--corporate{ background-image: url('../img/service-02.jpg'); }
+.t2-page-hero--ip{        background-image: url('../img/service-03.jpg'); }
 /* 必要に応じて増やす */
 
 
 /* ガバナンス用ヒーロー画像（実ファイル名に合わせて .jpg/.jpeg を選んでね） */
 .t2-page-hero--governance{
-  background-image: url('../img/service-3.jpg') !important;
+  background-image: url('../img/service-03.jpg') !important;
 }
 
 /* Hero: works */
 .t2-page-hero--works{
-  background-image: url('../img/service-1.jpeg') !important; /* 実ファイル名に合わせて .jpg/.jpeg を変更 */
+  background-image: url('../img/service-01.jpg') !important; /* 実ファイル名に合わせて .jpg/.jpeg を変更 */
 }
 
 /* Hero: privacy */
 .t2-page-hero--privacy{
-  background-image: url('../img/service-3.jpg') !important; /* ← フォルダは img、拡張子は .jpg */
+  background-image: url('../img/service-03.jpg') !important; /* ← フォルダは img、拡張子は .jpg */
 }
 
 /* team のヒーロー画像（CSSは docs/css/ → 画像は ../img/… で参照） */
 .t2-page-hero--team{
-  background-image: url('../img/hero.jpeg?v=1') !important;
+  background-image: url('../img/hero02.jpg?v=1') !important;
   background-position: center 38%;     /* 見せたい位置に微調整 */
   min-height: 40vh;                    /* VS寄りに少し低め（32〜44vhで好み調整） */
 }
@@ -2220,6 +2220,7 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 
 /* 子要素は前面へ（オーバーレイの上にテキストを出す） */
 .t2-page-hero--light > *{ position:relative; z-index:1; }
+
 
 
 
