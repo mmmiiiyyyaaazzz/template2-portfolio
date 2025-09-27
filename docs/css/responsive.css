@@ -2221,6 +2221,19 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 /* 子要素は前面へ（オーバーレイの上にテキストを出す） */
 .t2-page-hero--light > *{ position:relative; z-index:1; }
 
+/* x-cta の共通余白を安定化 */
+.x-cta { display:flex; align-items:center; justify-content:space-between; gap:clamp(12px,2vw,24px); padding:clamp(16px,3vw,28px); background:#f7f7f7; border-radius:16px; }
+.x-cta .xL { display:grid; gap:clamp(6px,1vw,10px); }
+.x-cta .xText { margin:0 0 clamp(4px,0.8vw,8px); line-height:1.7; }
+.x-cta .xTel { margin:0; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.x-cta .xBtn { white-space:nowrap; }
+
+/* スマホで縦積み */
+@media (max-width: 640px) {
+  .x-cta { flex-direction:column; align-items:stretch; }
+  .x-cta .xBtn { align-self:flex-start; }
+}
+
 
 
 
