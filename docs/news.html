@@ -208,32 +208,21 @@
 
 <section class="t2-cta-split">
   <div class="inner">
-    <div class="t2-cta t2-cta--article">
-      <p class="t2-cta-text">
-        ご相談はフォームまたはお電話にて<br class="sp-only">承ります。<br class="tab-only">初回相談は無料です。
-      </p>
-
-      <!-- ボタン：場所とイベント種別を明示 -->
-     <a class="t2-cta-tel__link"
-   href="tel:0312345678"
-   data-loc="cta"
-   aria-label="電話 03 1234 5678">TEL 03-1234-5678</a>
-
-
-      <!-- TEL：場所ラベルだけ付与 -->
-      <div class="t2-cta-tel">
-        <a class="t2-cta-tel__link"
-   href="tel:0312345678"
-   data-loc="cta"
-   onclick="gtag('event','tel_click',{location:this.dataset.loc||'cta'});">
-  TEL 03-1234-5678
-</a>
-
-        <small class="t2-cta-tel__hours">平日 9:00–18:00</small>
+    <section class="x-cta">
+      <div class="xL">
+        <p class="xText">
+          ご相談はフォームまたはお電話にて承ります。<br class="sp-only">初回相談は無料です。
+        </p>
+        <p class="xTel">
+          <a href="tel:0312345678" aria-label="電話 03 1234 5678">TEL 03-1234-5678</a>
+          <span class="xHours">平日 9:00–18:00</span>
+        </p>
       </div>
-    </div>
+      <a class="btn-gold xBtn" href="index.html#contact" data-track="contact">お問い合わせへ</a>
+    </section>
   </div>
 </section>
+
 
 
 
@@ -308,6 +297,7 @@ document.addEventListener('click', function(e){
 
 </body>
 </html>
+
 
 
 
