@@ -2223,6 +2223,9 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 
 
 
+@media (max-width: 768px){ #newsCta .sp-only{ display:inline; } }
+/* 375px以下だけ xs-only 改行を表示（#newsCtaの中だけ） */ #newsCta .xs-only{ display:none; } @media (max-width: 375px){ #newsCta .xs-only{ display:inline; } }
+
 
 
 
