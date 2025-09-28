@@ -2232,7 +2232,21 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 }
 
 
+@media (max-width: 768px){ #privacyCta .sp-only{ display:inline; } }
+/* 375px以下：タブレット改行を打ち消し、xs-only だけ表示 */
+#privacyCta .xs-only{ display:none; }
+@media (max-width: 375px){
+  #privacyCta .sp-only{ display:none; }   /* ← ココがポイント（タブレット改行を無効化） */
+  #privacyCta .xs-only{ display:inline; } /* “お電話にて”の直後で改行 */
+}
 
+@media (max-width: 768px){ #teamCta .sp-only{ display:inline; } }
+/* 375px以下：タブレット改行を打ち消し、xs-only だけ表示 */
+#teamCta .xs-only{ display:none; }
+@media (max-width: 375px){
+  #teamCta .sp-only{ display:none; }   /* ← ココがポイント（タブレット改行を無効化） */
+  #teamCta .xs-only{ display:inline; } /* “お電話にて”の直後で改行 */
+}
 
 
 
