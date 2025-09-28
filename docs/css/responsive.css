@@ -2224,7 +2224,13 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 
 
 @media (max-width: 768px){ #newsCta .sp-only{ display:inline; } }
-/* 375px以下だけ xs-only 改行を表示（#newsCtaの中だけ） */ #newsCta .xs-only{ display:none; } @media (max-width: 375px){ #newsCta .xs-only{ display:inline; } }
+/* 375px以下：タブレット改行を打ち消し、xs-only だけ表示 */
+#newsCta .xs-only{ display:none; }
+@media (max-width: 375px){
+  #newsCta .sp-only{ display:none; }   /* ← ココがポイント（タブレット改行を無効化） */
+  #newsCta .xs-only{ display:inline; } /* “お電話にて”の直後で改行 */
+}
+
 
 
 
