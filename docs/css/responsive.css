@@ -2221,6 +2221,54 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
 /* 子要素は前面へ（オーバーレイの上にテキストを出す） */
 .t2-page-hero--light > *{ position:relative; z-index:1; }
 
+/* ── news.html 専用 ───────────────────────────── */
+#newsCta .x-cta{
+display:flex; align-items:center; justify-content:space-between;
+gap:clamp(12px,2vw,24px);
+/* 親 .inner の左右パディングが効いている前提。x-cta 自体には背景・色を指定しない */
+padding-block: clamp(16px,3vw,28px);
+border-radius:16px; color:inherit;
+}
+#newsCta .xL{ display:grid; gap:clamp(6px,1vw,10px); min-width:0; }
+#newsCta .xText{ margin:0 0 clamp(4px,.8vw,8px); line-height:1.6; }
+#newsCta .xTel{ margin:0; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+#newsCta .xTel a{ text-decoration: none; }
+#newsCta .xHours{ font-size: .95em; opacity:.9; }
+#newsCta .xBtn{ white-space:nowrap; align-self:center; }
+
+
+/* 文字のにじみや行間が広がるのを防ぐ軽微な保険 */
+#newsCta{ line-height: normal; }
+
+
+/* スマホ：縦積み */
+@media (max-width:640px){
+#newsCta .x-cta{ flex-direction:column; align-items:stretch; }
+#newsCta .xBtn{ align-self:flex-start; }
+#newsCta .xText br.sp-only{ display:inline; }
+}
+/* タブレット：やや詰める（必要に応じて調整） */
+@media (min-width:641px) and (max-width:1024px){
+#newsCta .xText{ line-height:1.55; }
+}
+
+
+/* ── works.html にも同型を適用したい場合 ───────────── */
+#worksCta .x-cta{
+display:flex; align-items:center; justify-content:space-between;
+gap:clamp(12px,2vw,24px);
+padding-block: clamp(16px,3vw,28px);
+border-radius:16px; color:inherit;
+margin-block: clamp(16px,3vw,32px); /* 余白はページ事情で調整 */
+}
+#worksCta .xL{ display:grid; gap:clamp(6px,1vw,10px); min-width:0; }
+#worksCta .xText{ margin:0 0 clamp(4px,.8vw,8px); line-height:1.6; }
+#worksCta .xTel{ margin:0; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+#worksCta .xBtn{ white-space:nowrap; }
+@media (max-width:640px){
+#worksCta .x-cta{ flex-direction:column; align-items:stretch; }
+#worksCta .xBtn{ align-self:flex-start; }
+}
 
 
 
