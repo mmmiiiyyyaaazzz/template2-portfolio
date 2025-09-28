@@ -2248,6 +2248,15 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
   #teamCta .xs-only{ display:inline; } /* “お電話にて”の直後で改行 */
 }
 
+@media (max-width: 375px){
+  /* 親のflexを解除して x-cta を横幅いっぱいに */
+  #privacyCta > .inner{ display:block; }
+  #privacyCta .x-cta{ width:100%; }
+
+  /* 「お電話にて」を分割しない */
+  #privacyCta .xText .nb{ white-space: nowrap; }
+}
+
 
 
 
