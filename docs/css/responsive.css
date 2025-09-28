@@ -2257,6 +2257,14 @@ body:has(.news-detail:target) .t2-pagination{ display: none; } /* ページネ�
   #privacyCta .xText .nb{ white-space: nowrap; }
 }
 
+@media (max-width:375px){
+  #privacyCta .sp-only{ display:none; }   /* タブレット用改行は消す */
+  #privacyCta .xs-only{ display:inline; } /* ← この位置で改行 */
+  #privacyCta > .inner{ display:block; }  /* 親flex解除で幅確保 */
+  #privacyCta .x-cta{ width:100%; }
+  #privacyCta .xText .nb{ white-space:nowrap; } /* 「お電話にて」を一塊に */
+}
+
 
 
 
